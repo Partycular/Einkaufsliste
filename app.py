@@ -36,9 +36,9 @@ def index():
         return render_template('index.html', tasks=tasks)
 
 
-@main.route('/delete/<int:id>')
-def delete(id):
-    task_to_delete = Todo.query.get_or_404(id)
+@main.route('/delete/<identity>')
+def delete(identity):
+    task_to_delete = Todo.query.get_or_404(identity)
 
     try:
         db.session.delete(task_to_delete)
@@ -48,9 +48,9 @@ def delete(id):
         return 'Problem deleting task'
 
 
-@main.route('/update/<int:id>', methods=['GET', 'POST'])
-def update(id):
-    task = Todo.query.get_or_404(id)
+@main.route('/update/<identity>', methods=['GET', 'POST'])
+def update(identity):
+    task = Todo.query.get_or_404(identity)
 
     if request.method == 'POST':
         task.content = request.form['content']
