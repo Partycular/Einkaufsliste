@@ -1,5 +1,3 @@
-import os
-
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -67,5 +65,4 @@ def update(id):
 
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000))
     main.run(debug=True)
