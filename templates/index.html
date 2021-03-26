@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<div class="mx-auto container-fluid" style="width: 300px">
+<h1 align="center">Einkaufsliste</h1>
+
+{% if tasks|length < 1 %}
+
+<h4>Noch ist die Liste leer</h4>
+</div>
+{% else %}
+
+<div class="container-fluid">
+    <table width="100%">
+        <thead>
+        <tr class="table-headline">
+            <th>Aufgabe</th>
+            <th>Hinzugefügt</th>
+            <th>Aufgabe</th>
+        </tr>
+        </thead>
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.content }}</td>
+            <td>{{ task.date_created.date() }}</td>
+            <td>
+                <a class="btn btn-secondary" href="/delete/{{task.id}}">löschen</a>
+                <a class="btn btn-secondary" href="/update/{{task.id}}">ändern</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+    {% endif %}
+<div class="mx-auto" style="width: 50%;">
+    <form action="/" method="POST" >
+        <div class="form-group" >
+            <p allign="center">
+            <input class="form-control" type="text" name="content" id="content">
+            <input class="btn btn-primary" type="submit" value="hinzufügen">
+            </p>
+        </div>
+    </form>
+</div>
+
+    {% endblock %}
