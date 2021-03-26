@@ -28,8 +28,8 @@
             <td>{{ task.content }}</td>
             <td>{{ task.date_created.date() }}</td>
             <td>
-                <a class="btn btn-secondary" href="/delete/{{task.id}}">löschen</a>
-                <a class="btn btn-secondary" href="/update/{{task.id}}">ändern</a>
+                <a class="btn btn-secondary" href="/delete/{{task.identity}}">löschen</a>
+                <a class="btn btn-secondary" href="/update/{{task.identity}}">ändern</a>
             </td>
         </tr>
         {% endfor %}
@@ -40,7 +40,7 @@
     <form action="/" method="POST" >
         <div class="form-group" >
             <p allign="center">
-            <input class="form-control" type="text" name="content" id="content">
+            <input class="form-control" type="text" name="content" identity="content">
             <input class="btn btn-primary" type="submit" value="hinzufügen">
             </p>
         </div>
